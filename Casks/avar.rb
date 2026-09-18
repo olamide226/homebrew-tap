@@ -2,10 +2,10 @@
 cask "avar" do
   binary "avr", target: "avar"
 
-  version "0.12.7"
+  version "0.12.8"
 
   on_macos do
-    sha256 "a7dc557d24aef8628ccb173d7efc1b067ad48588ade554cd64d77793c9bef3fb"
+    sha256 "190a71f2bcbf4309dab657ee4cc78f0cd1ccafabc66adba83da2608fbb54cfc1"
     url "https://github.com/olamide226/avar/releases/download/v#{version}/avar_#{version}_darwin_all.tar.gz"
   end
 
