@@ -2,10 +2,10 @@
 cask "avar" do
   binary "avr", target: "avar"
 
-  version "0.12.4"
+  version "0.12.5"
 
   on_macos do
-    sha256 "8ad021936c63f099390f112401ec4bdedd06e08d02176d7588ff1b8a904a6791"
+    sha256 "4de37ee4aece2e4bdae5a1b5124c3a3f3eae3f446373655797dc3b973cc5b733"
     url "https://github.com/olamide226/avar/releases/download/v#{version}/avar_#{version}_darwin_all.tar.gz"
   end
 
@@ -28,5 +28,13 @@ cask "avar" do
     end
   end
 
-  # No zap stanza required
+  zap launchctl: [
+      "com.avar.idle-check",
+    ]
+
+  caveats <<~EOS
+    avar registers a background idle check (launchd agent com.avar.idle-check)
+    the first time it creates an environment. `brew uninstall --zap avar`
+    removes it with avar; see the README's Uninstall section.
+  EOS
 end
