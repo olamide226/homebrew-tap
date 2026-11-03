@@ -2,10 +2,16 @@
 cask "avar" do
   binary "avr", target: "avar"
 
-  version "0.14.0"
+  postflight_steps do
+    on_macos do
+      run "/usr/bin/xattr", args: ["-d", "-r", "com.apple.quarantine", "{{staged_path}}/avr"]
+    end
+  end
+
+  version "0.14.1"
 
   on_macos do
-    sha256 "7a6002f90d1c00b63423aaa81133185189a1b03a19a122447567a2aec17fee09"
+    sha256 "e9ba05613f01afb68c30beedd0074296f1177f73ba7b5c24a15de55ad71510bf"
     url "https://github.com/olamide226/avar/releases/download/v#{version}/avar_#{version}_darwin_all.tar.gz"
   end
 
@@ -16,17 +22,12 @@ cask "avar" do
   livecheck do
     skip "Auto-generated on release."
   end
+  depends_on :macos
   depends_on formula: [
       "lima",
     ]
 
   binary "avr"
-
-  postflight do
-    if OS.mac?
-      system "xattr", "-d", "-r", "com.apple.quarantine", "#{staged_path}/avr"
-    end
-  end
 
   zap launchctl: [
       "com.avar.idle-check",
