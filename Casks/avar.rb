@@ -8,10 +8,10 @@ cask "avar" do
     end
   end
 
-  version "0.14.2"
+  version "0.14.3"
 
   on_macos do
-    sha256 "b987ba07e05375c5fab43ab5bc2586ec8b1a719046d5588ec9e32c914092e6d8"
+    sha256 "4ce5a405644f7fb03cb2578bb08b2efc6e12debd1da1bb76809750fcdda32e70"
     url "https://github.com/olamide226/avar/releases/download/v#{version}/avar_#{version}_darwin_all.tar.gz"
   end
 
